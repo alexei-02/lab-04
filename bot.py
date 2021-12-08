@@ -19,6 +19,7 @@ import code         # code.interact
 import os           # environment variables
 import inspect      # call stack inspection
 import random
+import argparse
 from discord import channel
 from discord import message
 from discord import player
@@ -140,18 +141,19 @@ async def leave(ctx):
 ################################################################################
 
 if __name__ == '__main__':
-    # check that token exists in environment
-    if 'BOT_TOKEN' not in os.environ:
-        log_msg('save your token in the BOT_TOKEN env variable!', 'error')
-        exit(-1)
+    parser = argparse.ArgumentParser(description="Enter the token")
+    parser.add_argument('-t', '--token', help="token")
+
+    args = parser.parse_args()
+
+    token = args.token
  
     # launch bot (blocking operation)
-    bot.run(os.environ['BOT_TOKEN'])
+    bot.run(token)
 
 
 
 #OTEzMDgwNDEzNTI4OTI4MzU2.YZ5SZg.7Pi_gke40tjSy2niFyMuAz-YrUw
-
 
 
 
